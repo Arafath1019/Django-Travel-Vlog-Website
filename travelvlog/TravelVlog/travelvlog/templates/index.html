@@ -1,4 +1,8 @@
 {% load static %}
+{% static "images" as baseUrl %}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +36,6 @@
 
         <!-- Website Title -->
         <title>Aria - Business HTML Landing Page Template</title>
-
         <!-- Styles -->
         <link
             href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
@@ -353,142 +356,55 @@
                 <!-- end of row -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-image">
-                                <img
-                                    class="img-fluid"
-                                    src="{% static 'images/services-1.jpg' %}%"
-                                    alt="alternative"
-                                />
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">
-                                    Off The Ground Off The Ground
-                                </h3>
-                                <p>
-                                    Perfect for fresh ideas or young startups,
-                                    this package will help get the business off
-                                    the ground
-                                </p>
-                                <ul class="list-unstyled li-space-lg">
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body">
-                                            Environment and competition
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body">
-                                            Designing the marketing plan
-                                        </div>
-                                    </li>
-                                </ul>
-                                <p class="price">
-                                    Starting at <span>$199</span>
-                                </p>
-                            </div>
-                            <div class="button-container">
-                                <a
-                                    class="btn-solid-reg page-scroll"
-                                    href="#callMe"
-                                    >DETAILS</a
-                                >
-                            </div>
-                            <!-- end of button-container -->
-                        </div>
-                        <!-- end of card -->
 
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-image">
-                                <img
-                                    class="img-fluid"
-                                    src="{% static 'images/services-2.jpg' %}"
-                                    alt="alternative"
-                                />
+                        {% for card in cards %}
+                            <!-- Card -->
+                            <div class="card">
+                                <div class="card-image">
+                                    <img
+                                        class="img-fluid"
+                                        src="{{card.img.url}}"
+                                        alt="alternative"
+                                    />
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                    {{card.name}}
+                                    </h3>
+                                    <p>
+                                        {{card.description}}
+                                    </p>
+                                    <ul class="list-unstyled li-space-lg">
+                                        {% if card.offer %}
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">
+                                                    Offer available!!!
+                                                </div>
+                                            </li>
+                                        {% endif %}
+                                        <li class="media">
+                                            <i class="fas fa-square"></i>
+                                            <div class="media-body">
+                                                Designing the marketing plan
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <p class="price">
+                                        Starting at <span>${{card.price}}</span>
+                                    </p>
+                                </div>
+                                <div class="button-container">
+                                    <a
+                                        class="btn-solid-reg page-scroll"
+                                        href="#callMe"
+                                        >DETAILS</a
+                                    >
+                                </div>
+                                <!-- end of button-container -->
                             </div>
-                            <div class="card-body">
-                                <h3 class="card-title">Accelerated Growth</h3>
-                                <p>
-                                    Use this service pack to give your company
-                                    the necessary impulse to become an industry
-                                    leader
-                                </p>
-                                <ul class="list-unstyled li-space-lg">
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body">
-                                            Business strategy planning
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body">
-                                            Taking the planned actions
-                                        </div>
-                                    </li>
-                                </ul>
-                                <p class="price">
-                                    Starting at <span>$299</span>
-                                </p>
-                            </div>
-                            <div class="button-container">
-                                <a
-                                    class="btn-solid-reg page-scroll"
-                                    href="#callMe"
-                                    >DETAILS</a
-                                >
-                            </div>
-                            <!-- end of button-container -->
-                        </div>
-                        <!-- end of card -->
-
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-image">
-                                <img
-                                    class="img-fluid"
-                                    src="{% static 'images/services-3.jpg' %}"
-                                    alt="alternative"
-                                />
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">Market Domination</h3>
-                                <p>
-                                    You already are a reference point in your
-                                    industry now you need to learn about
-                                    acquisitions
-                                </p>
-                                <ul class="list-unstyled li-space-lg">
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body">
-                                            Maintaining the leader status
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body">
-                                            Acquisitions the right way
-                                        </div>
-                                    </li>
-                                </ul>
-                                <p class="price">
-                                    Starting at <span>$299</span>
-                                </p>
-                            </div>
-                            <div class="button-container">
-                                <a
-                                    class="btn-solid-reg page-scroll"
-                                    href="#callMe"
-                                    >DETAILS</a
-                                >
-                            </div>
-                            <!-- end of button-container -->
-                        </div>
-                        <!-- end of card -->
+                            <!-- end of card -->
+                        {% endfor %}
                     </div>
                     <!-- end of col -->
                 </div>
